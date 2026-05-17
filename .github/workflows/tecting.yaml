@@ -1,0 +1,20 @@
+name: First Workflow
+
+on:
+  push:
+
+  workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Print Welcome Message
+        run: echo "Hello from GitHub Actions"
+
+      - name: Print Success Message
+        run: echo "Workflow executed successfully"
