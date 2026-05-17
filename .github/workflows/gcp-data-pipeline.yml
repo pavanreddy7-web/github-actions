@@ -1,0 +1,58 @@
+name: GCP Data Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Select deployment environment"
+        required: true
+        default: "DEV"
+        type: choice
+        options:
+          - DEV
+          - QA
+          - PROD
+
+env:
+  APP_NAME: GCP-DataPipeline
+  REGION: us-central1
+
+jobs:
+
+  gcp-data-migration:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Code
+        run: echo "Fetching code from GitHub repository..."
+
+      - name: Validate Environment
+        run: echo "Selected environment is ${{ github.event.inputs.environment }}"
+
+      - name: Authenticate
+        env:
+          GCP_TOKEN: ${{ secrets.GCP_TOKEN }}
+        run: echo "Authenticating using GitHub Secrets..."
+
+      - name: Upload Files
+        run: echo "Uploading files for $APP_NAME to GCS..."
+
+      - name: Trigger Dataproc Job
+        run: echo "Running Dataproc job in $REGION region..."
+
+      - name: Deployment Validation
+        run: echo "Validating deployment and migrated data..."
+
+      - name: Success Message
+        if: success()
+        run: echo "Pipeline executed successfully"
+
+      - name: Failure Message
+        if: failure()
+        run: echo "Pipeline execution failed"
+
+      - name: Cleanup
+        if: always()
+        run: echo "Cleaning workspace and finishing pipeline"
