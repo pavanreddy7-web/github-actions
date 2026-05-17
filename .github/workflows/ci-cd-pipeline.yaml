@@ -1,0 +1,40 @@
+name: CI CD Pipeline
+
+on:
+  push:
+
+  workflow_dispatch:
+
+env:
+  APP_NAME: DemoApp
+
+jobs:
+
+  build-test-deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Stage
+        run: echo "Fetching code from GitHub..."
+
+      - name: Build Stage
+        run: echo "Building $APP_NAME ..."
+
+      - name: Test Stage
+        run: echo "Running unit tests..."
+
+      - name: Package Stage
+        run: echo "Creating deployment package..."
+
+      - name: Deploy Stage
+        run: echo "Deploying application..."
+
+      - name: Success Message
+        if: success()
+        run: echo "Pipeline executed successfully!"
+
+      - name: Failure Message
+        if: failure()
+        run: echo "Pipeline failed!"
