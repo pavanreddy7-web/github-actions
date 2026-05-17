@@ -1,0 +1,23 @@
+name: Build Test Deploy Workflow
+
+on:
+  push:
+
+  workflow_dispatch:
+
+jobs:
+
+  build-test-deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Build Stage
+        run: echo "Building application..."
+
+      - name: Test Stage
+        run: echo "Running tests..."
+
+      - name: Deploy Stage
+        run: echo "Deploying application..."
