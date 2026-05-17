@@ -1,16 +1,10 @@
-name: Second Workflow
-
-on: pull_request
+name: Second Pipeline
+on: push
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-
-      - name: Print Welcome Message
-        run: echo "Hello from GitHub Actions"
-
-      - name: Print Success Message
-        run: echo "Workflow executed successfully"
+      - name: print welcome message
+        run: echo "Hello from github"
+      - name: print success message
+        run: echo "Pipeline executed successfully"
