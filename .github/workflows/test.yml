@@ -1,6 +1,6 @@
 name: Second Workflow
 
-
+on: pull_request
 jobs:
 
   build:
