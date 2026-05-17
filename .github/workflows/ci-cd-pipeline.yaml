@@ -25,7 +25,7 @@ jobs:
       - name: Test Stage
         run: echo "Running unit tests..."
 
-      - name: Package Stage
+      - name: Package Stage,
         run: echo "Creating deployment package..."
 
       - name: Deploy Stage
