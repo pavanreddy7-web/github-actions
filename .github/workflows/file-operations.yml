@@ -1,0 +1,31 @@
+name: File Operations Workflow
+
+on:
+  push:
+
+  workflow_dispatch:
+
+jobs:
+
+  file-operations:
+
+    runs-on: windows-latest
+
+    steps:
+
+      - name: Create File
+        run: echo Hello from GitHub Actions > output.txt
+
+      - name: Read File
+        run: type output.txt
+
+      - name: List Files
+        run: dir
+
+      - name: Success Message
+        if: success()
+        run: echo "File operations completed successfully"
+
+      - name: Failure Message
+        if: failure()
+        run: echo "Workflow failed"
