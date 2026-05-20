@@ -1,0 +1,17 @@
+name: Pavan 
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  building:
+    runs-on: windows-latest
+    steps:
+      - name: building
+        run: echo "hello we are builind"
+      - name: done
+        run: echo "building done"
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: testing
+        run: echo "testing done"
